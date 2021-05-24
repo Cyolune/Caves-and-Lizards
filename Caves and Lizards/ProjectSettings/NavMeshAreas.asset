@@ -69,7 +69,11 @@ NavMeshProjectSettings:
     cost: 1
   - name: 
     cost: 1
+<<<<<<< HEAD
   m_LastAgentTypeID: -334000983
+=======
+  m_LastAgentTypeID: -887442657
+>>>>>>> 747a3663bb9a8ba835bd3578a67ff5306e167789
   m_Settings:
   - serializedVersion: 2
     agentTypeID: 0
@@ -85,6 +89,7 @@ NavMeshProjectSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
+<<<<<<< HEAD
     maxJobWorkers: 0
     preserveTilesOutsideBounds: 0
     debug:
@@ -105,8 +110,13 @@ NavMeshProjectSettings:
     accuratePlacement: 0
     maxJobWorkers: 0
     preserveTilesOutsideBounds: 0
+=======
+>>>>>>> 747a3663bb9a8ba835bd3578a67ff5306e167789
     debug:
       m_Flags: 0
   m_SettingNames:
   - Humanoid
+<<<<<<< HEAD
   - Crosshair
+=======
+>>>>>>> 747a3663bb9a8ba835bd3578a67ff5306e167789

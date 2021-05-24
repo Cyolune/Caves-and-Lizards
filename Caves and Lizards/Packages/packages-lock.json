@@ -39,6 +39,16 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+<<<<<<< HEAD
+=======
+    "com.unity.inputsystem": {
+      "version": "1.0.2",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+>>>>>>> 747a3663bb9a8ba835bd3578a67ff5306e167789
     "com.unity.test-framework": {
       "version": "1.1.24",
       "depth": 0,
