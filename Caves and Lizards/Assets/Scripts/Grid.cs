@@ -6,8 +6,9 @@ public class Grid : MonoBehaviour
 {
     [SerializeField] private int width;
     [SerializeField] private int height;
-    [SerializeField] private int cellSize;
+    [SerializeField] private float cellSize;
     [SerializeField] private Vector3 leftBotCorner;
+    
     private Vector3[,] gridCentreArray;
 
     // The player in the game

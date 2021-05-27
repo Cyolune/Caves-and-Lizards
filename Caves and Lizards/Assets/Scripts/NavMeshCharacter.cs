@@ -5,34 +5,52 @@ using UnityEngine.AI;
 
 public class NavMeshCharacter : MonoBehaviour
 {   
+    
     private NavMeshAgent navMeshAgent;
+    [SerializeField] private CombatTime combatScript;
 
-    public Grid gridComponent;
+    private bool hasCombatStarted = false;
 
     // Start is called before the first frame update
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        // grid = Testgrid.GetComponent<Grid>();
     }
 
     // Update is called once per frame
     void Update()
-    {
-        if (Input.GetMouseButtonDown(1))
-        {
-            Debug.Log("Input passes");
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            bool hitSmth = Physics.Raycast(ray, out RaycastHit hitInfo);
+    {   
+        
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        bool hitSmth = Physics.Raycast(ray, out RaycastHit hitInfo);
 
-            if (hitSmth)
-            {   
-                int xCoordGrid = gridComponent.GetX(hitInfo.point);
-                int yCoordGrid = gridComponent.GetY(hitInfo.point);
-                Vector3 gridCentre = gridComponent.GetWorldPositionCentre(xCoordGrid, yCoordGrid);
-                navMeshAgent.SetDestination(gridCentre);
+        bool isCombatTime = combatScript.isItCombatTime();
+
+        if (hitSmth)
+        {
+            if (isCombatTime && !hasCombatStarted)
+            {
+                Debug.Log("Combat Started, movement stopped!");
+                hasCombatStarted = true;
+                navMeshAgent.SetDestination(transform.position);
+            } else if (!isCombatTime && hasCombatStarted)
+            {
+                Debug.Log("Combat ended, normal movement allowed!");
+                hasCombatStarted = false;
+            }
+            if (Input.GetMouseButtonDown(0) && !isCombatTime)
+            {
+                Debug.Log("Mouse 1 Pressed");
+                navMeshAgent.SetDestination(hitInfo.point);
+            }
+            if (Input.GetMouseButtonDown(1) && !isCombatTime)
+            {
+                Debug.Log("Mouse 2 Pressed, movement stopped");
+                navMeshAgent.SetDestination(transform.position);
             }
         }
+
+
     }
 
 }
