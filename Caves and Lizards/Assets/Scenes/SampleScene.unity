@@ -561,6 +561,7 @@ MonoBehaviour:
   Initiative: 70
   isAlive: 1
   hasEndedTurn: 0
+  isTurn: 0
 --- !u!136 &433172970
 CapsuleCollider:
   m_ObjectHideFlags: 0
