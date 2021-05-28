@@ -6,20 +6,10 @@ public class Grid : MonoBehaviour
 {
     [SerializeField] private int width;
     [SerializeField] private int height;
-<<<<<<< HEAD
     [SerializeField] private float cellSize;
     [SerializeField] private Vector3 leftBotCorner;
-    
-=======
-<<<<<<< HEAD
-    [SerializeField] private float cellSize;
-    [SerializeField] private Vector3 leftBotCorner;
-    
-=======
-    [SerializeField] private int cellSize;
-    [SerializeField] private Vector3 leftBotCorner;
->>>>>>> 747a3663bb9a8ba835bd3578a67ff5306e167789
->>>>>>> 2594fe09400e5c977cf6a25d93ee384733f4d1fc
+    // [SerializeField] private float cellSize;
+    // [SerializeField] private Vector3 leftBotCorner;
     private Vector3[,] gridCentreArray;
 
     // The player in the game
