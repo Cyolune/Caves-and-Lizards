@@ -26,30 +26,31 @@ public class NavMeshCharacter : MonoBehaviour
         bool isCombatTime = combatScript.isItCombatTime();
 
         if (hitSmth)
-    {
-        if (Input.GetMouseButtonDown(1))
         {
-            if (isCombatTime && !hasCombatStarted)
+            if (Input.GetMouseButtonDown(1))
             {
-                Debug.Log("Combat Started, movement stopped!");
-                hasCombatStarted = true;
-                navMeshAgent.SetDestination(transform.position);
-            } else if (!isCombatTime && hasCombatStarted)
-            {
-                Debug.Log("Combat ended, normal movement allowed!");
-                hasCombatStarted = false;
+                if (isCombatTime && !hasCombatStarted)
+                {
+                    Debug.Log("Combat Started, movement stopped!");
+                     = true;
+                    navMeshAgent.SetDestination(transform.position);
+                } else if (!isCombatTime && hasCombatStarted)
+                {
+                    Debug.Log("Combat ended, normal movement allowed!");
+                    hasCombatStarted = false;
+                   }
+                if (Input.GetMouseButtonDown(0) && !isCombatTime)
+                {
+                    Debug.Log("Mouse 1 Pressed");
+                    navMeshAgent.SetDestination(hitInfo.point);
+                }
+                if (Input.GetMouseButtonDown(1) && !isCombatTime)
+                {
+                    Debug.Log("Mouse 2 Pressed, movement stopped");
+                    navMeshAgent.SetDestination(transform.position);
+                }
             }
-            if (Input.GetMouseButtonDown(0) && !isCombatTime)
-            {
-                Debug.Log("Mouse 1 Pressed");
-                navMeshAgent.SetDestination(hitInfo.point);
-            }
-            if (Input.GetMouseButtonDown(1) && !isCombatTime)
-            {
-                Debug.Log("Mouse 2 Pressed, movement stopped");
-                navMeshAgent.SetDestination(transform.position);
-            }
-        }
+        }    
     }
 
 }
