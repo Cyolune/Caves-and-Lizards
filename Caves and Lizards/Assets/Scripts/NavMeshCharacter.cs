@@ -32,7 +32,7 @@ public class NavMeshCharacter : MonoBehaviour
                 if (isCombatTime && !hasCombatStarted)
                 {
                     Debug.Log("Combat Started, movement stopped!");
-                     = true;
+                    hasCombatStarted = true;
                     navMeshAgent.SetDestination(transform.position);
                 } else if (!isCombatTime && hasCombatStarted)
                 {
