@@ -2,15 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using PQNS; // Priority Queue
-using Char; // Characters
 
 public class CombatTime : MonoBehaviour
 {   
     private bool isCombatTime;
 
-    // placed here temporarily for later usage.
-    public PriorityQueue<Character> unitsInCombat = new PriorityQueue<Character>();
 
     public List<GameObject> combatUnitsList = new List<GameObject>();
 
