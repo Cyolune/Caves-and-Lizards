@@ -11,6 +11,10 @@ public class NavMeshCharacter : MonoBehaviour
 
     private bool hasCombatStarted = false;
 
+    private bool canMove = true; //will be set to false when it is not on player's turn.
+    public void setCannotMove() {canMove = false;}
+    public void setCanMove() {canMove = true;}
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +30,7 @@ public class NavMeshCharacter : MonoBehaviour
 
         bool isCombatTime = combatScript.isItCombatTime();
 
-        if (hitSmth)
+        if (hitSmth && canMove)
         {
             if (isCombatTime && !hasCombatStarted)
             {

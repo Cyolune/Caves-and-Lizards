@@ -4,7 +4,7 @@ using UnityEngine;
 
 /** This script encapsulates the camera movement determined by player inputs. 
  *
- * Involves moving via WASD and Edge Panning, right click to rotate and scroll wheel to zoom.
+ * Involves moving via WASD and Edge Panning, middle click to rotate and scroll wheel to zoom.
  */
 public class CameraMovement : MonoBehaviour
 {
@@ -52,23 +52,17 @@ public class CameraMovement : MonoBehaviour
         /**/
     }
 
-    // Right Click and hold for >0.15s
+    // Midlde Mouse Click and hold for >0.15s
     private Vector3 heldPos;
     private float startHeldTime;
     void Rotate ()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(2))
         {
-            startHeldTime = Time.time;
+            heldPos = Input.mousePosition;
         }
-        if (Input.GetMouseButton(1)) 
+        if (Input.GetMouseButton(2)) 
         {
-            if (Time.time - startHeldTime < 0.15) return;
-            if (Time.time - startHeldTime < 0.16) 
-            {
-                heldPos = Input.mousePosition;
-                return;
-            }
             Vector3 newPos = Input.mousePosition;
             Vector3 diff = newPos - heldPos; // +ve rotate right
             transform.Rotate(new Vector3(0,1,0), diff.x / 2, Space.World);
