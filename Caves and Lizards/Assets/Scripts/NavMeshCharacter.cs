@@ -34,12 +34,12 @@ public class NavMeshCharacter : MonoBehaviour
         {
             if (isCombatTime && !hasCombatStarted)
             {
-                Debug.Log("Combat Started, movement stopped!");
+                Debug.Log("NavMeshChar.cs: Combat Started, movement stopped!");
                 hasCombatStarted = true;
                 navMeshAgent.SetDestination(transform.position);
             } else if (!isCombatTime && hasCombatStarted)
             {
-                Debug.Log("Combat ended, normal movement allowed!");
+                Debug.Log("NavMeshChar.cs: Combat ended, normal movement allowed!");
                 hasCombatStarted = false;
             }
             if (Input.GetMouseButtonDown(0) && !isCombatTime)

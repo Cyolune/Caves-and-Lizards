@@ -52,7 +52,7 @@ public class CameraMovement : MonoBehaviour
         */
     }
 
-    // Midlde Mouse Click and hold for >0.15s
+    // Middle Mouse Click
     private Vector3 heldPos;
     private float startHeldTime;
     void Rotate ()

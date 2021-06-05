@@ -21,8 +21,9 @@ namespace StatsNS {
         public Stats(float[] stats) {
             for (int i = 0; i < 6; i++) {
                 this.stats.Add(stats[i]);
+                this.statMods.Add(new List<float>());
             }
-            currentHP = maxHP();
+            currentHP = stats[0] * 5 + stats[3] * 10;
             HPpercent = 1f;
         }
 
@@ -32,11 +33,12 @@ namespace StatsNS {
         
         public float getStat(int i) {
             float stat = stats[i];
+            List<float> statModsArr = statMods[i];
+            foreach (float f in statModsArr) {stat += f;}
 
             /* Commented out for now since it returns a runtime error, won't debug for now
             foreach (float f in statMods[i]) {stat += f;}
             */
-
             return stat;
         }
 

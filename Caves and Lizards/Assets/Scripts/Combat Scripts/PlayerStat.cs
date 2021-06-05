@@ -6,6 +6,7 @@ using StatsNS;
 public class PlayerStat : MonoBehaviour, StatInterface
 {
     Stats stats;
+    
     public bool isTurn;
 
     public float hP;

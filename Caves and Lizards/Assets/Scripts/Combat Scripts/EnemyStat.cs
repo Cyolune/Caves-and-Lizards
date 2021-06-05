@@ -24,7 +24,8 @@ public class EnemyStat : MonoBehaviour, StatInterface
     {
         
     }
-    
+
+    //Returns initiative of the unit.    
     public float getInitiative() {return stats.initiative();}
 
     public bool hasEndedTurn() {return !isTurn;}
@@ -32,6 +33,7 @@ public class EnemyStat : MonoBehaviour, StatInterface
     public void startTurn() {isTurn = true;}
 
     public void endTurn() {isTurn = false;}
+    
     public bool isAlive() {
         return hP > 0;
     }

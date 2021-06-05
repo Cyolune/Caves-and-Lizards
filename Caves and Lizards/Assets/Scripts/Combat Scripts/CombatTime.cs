@@ -47,12 +47,12 @@ public class CombatTime : MonoBehaviour
         }
         if (isCombatTime && !enemy1Stat.isAlive())
         {
-            Debug.Log("Combat ended!");
+            Debug.Log("CombatTime.cs: Combat ended!");
             isCombatTime = false;
         }
         if (!isCombatTime && distance < 4 && enemy1.GetComponent<StatInterface>().isAlive())
         {   
-            Debug.Log("Combat started!");
+            Debug.Log("CombatTime.cs: Combat started!");
             isCombatTime = true;
         }
     }
