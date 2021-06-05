@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 /** This script encapsulates the rendering and movement of crosshair
  *
@@ -24,9 +23,9 @@ public class CrosshairMovement : MonoBehaviour
     void Update()
     {
         Vector3 playerCurrPos = player.transform.position;
-        if (playerCurrPos != playerLastPos || Input.GetMouseButton(1))
+        if (playerCurrPos != playerLastPos || Input.GetMouseButton(2))
         { // If the player is moving, disable rendering crosshair.
-        // If right click is held (for camera rotation), disable rendering crosshair
+        // If middle mouse click is held (for camera rotation), disable rendering crosshair
             GetComponent<Renderer>().enabled = false;
             playerLastPos = playerCurrPos;
         } else { 

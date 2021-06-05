@@ -71,6 +71,11 @@ namespace PQNS
             return s;
         }
 
+        public List<T> getData()
+        {
+            return data;
+        }
+
         public bool IsConsistent()
         {
             // is the heap property true for all data?
