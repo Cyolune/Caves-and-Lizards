@@ -20,7 +20,7 @@ namespace StatsNS {
         public bool isInCombat;
         public Stats(float[] stats) {
             for (int i = 0; i < 6; i++) {
-                this.stats[i] = stats[i];
+                this.stats.Add(stats[i]);
             }
             currentHP = maxHP();
             HPpercent = 1f;
@@ -32,7 +32,11 @@ namespace StatsNS {
         
         public float getStat(int i) {
             float stat = stats[i];
+
+            /* Commented out for now since it returns a runtime error, won't debug for now
             foreach (float f in statMods[i]) {stat += f;}
+            */
+
             return stat;
         }
 
@@ -69,6 +73,8 @@ namespace StatsNS {
                 currentHP = HPpercent * this.maxHP(); // if con is modified, readjust current HP 
             }            
         }
-
+        public float getCurrentHP() {
+            return currentHP;
+        }
     } // class
 } // namespace

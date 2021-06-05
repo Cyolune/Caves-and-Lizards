@@ -538,6 +538,7 @@ GameObject:
   - component: {fileID: 433172972}
   - component: {fileID: 433172971}
   - component: {fileID: 433172970}
+  - component: {fileID: 433172974}
   - component: {fileID: 433172969}
   m_Layer: 0
   m_Name: Enemy1
@@ -555,13 +556,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 433172968}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9243b2c9e35f9547929f71aef642950, type: 3}
+  m_Script: {fileID: 11500000, guid: 5afb4167d9a28f3419dd2137bbf052d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Initiative: 70
-  isAlive: 1
-  hasEndedTurn: 0
   isTurn: 0
+  hP: 0
 --- !u!136 &433172970
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -639,6 +638,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &433172974
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433172968}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1001 &523668286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -969,12 +984,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 544259774}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a9d2a612bcbf02428cf82f2913b380b, type: 3}
+  m_Script: {fileID: 11500000, guid: e6b11426a77745e4f98177e6feb5a0ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Initiative: 100
-  isAlive: 1
-  hasEndedTurn: 0
+  isTurn: 0
+  hP: 0
 --- !u!1001 &564982360
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1090,8 +1104,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   combatUnitsList: []
+  unitsInCombat: 0
   player: {fileID: 544259774}
   enemy1: {fileID: 433172968}
+  currTurnUnit: {fileID: 0}
+  currUnitIndex: 0
 --- !u!4 &566786260
 Transform:
   m_ObjectHideFlags: 0
