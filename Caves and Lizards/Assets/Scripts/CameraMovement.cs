@@ -35,7 +35,7 @@ public class CameraMovement : MonoBehaviour
         if (WS != 0) transform.position += forward * WS / 50;
         if (DA != 0) transform.position += right * DA  / 50;
 
-        /* Currently Disabled Edge Panning to make game testing easier */
+        /* Currently Disabled Edge Panning to make game testing easier
         // Edge Panning
         // Left-Right
         if (Input.mousePosition.x >= Screen.width) {
@@ -49,10 +49,10 @@ public class CameraMovement : MonoBehaviour
         } else if (Input.mousePosition.y <= 0) {
             transform.position -= forward / 50;
         }
-        /**/
+        */
     }
 
-    // Midlde Mouse Click and hold for >0.15s
+    // Middle Mouse Click
     private Vector3 heldPos;
     private float startHeldTime;
     void Rotate ()
