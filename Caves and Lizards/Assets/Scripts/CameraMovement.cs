@@ -17,13 +17,13 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-        Move();
-        Rotate();
-        Zoom();
+        StartCoroutine(Move());
+        StartCoroutine(Rotate());
+        StartCoroutine(Zoom());
     }
     
     // Camera movement via WASD and Edge panning
-    void Move ()
+    IEnumerator Move ()
     {
         // WASD movement
         float WS = Input.GetAxis("Vertical");
@@ -50,31 +50,55 @@ public class CameraMovement : MonoBehaviour
             transform.position -= forward / 50;
         }
         */
+        yield return null;
     }
 
-    // Midlde Mouse Click and hold for >0.15s
+    // Middle Mouse Click
     private Vector3 heldPos;
-    private float startHeldTime;
-    void Rotate ()
+    private Ray ray = new Ray();
+    private Plane hPlane = new Plane();
+    private Vector3 origFacingDir = new Vector3();
+    IEnumerator Rotate()
     {
         if (Input.GetMouseButtonDown(2))
-        {
+        { // initialise the constants at the point of mouse click
             heldPos = Input.mousePosition;
+            ray = new Ray(transform.position, transform.forward);
+            hPlane = new Plane(Vector3.up, Vector3.zero);
+            origFacingDir = transform.eulerAngles; // facing direction angle in degrees
         }
         if (Input.GetMouseButton(2)) 
-        {
+        { // change the position and rotation according to mouse movement
+            ray = new Ray(transform.position, transform.forward);
             Vector3 newPos = Input.mousePosition;
-            Vector3 diff = newPos - heldPos; // +ve rotate right
-            transform.Rotate(new Vector3(0,1,0), diff.x / 2, Space.World);
-            heldPos = newPos;
+            float diffInX = (newPos.x - heldPos.x) / 25; // +ve rotate right, also arc length
+            
+            // Plane.Raycast stores the distance from ray.origin to the hit point in this variable:
+            float distance = 0; 
+            Vector3 botOfCone = new Vector3();
+            // if the ray hits the plane...
+            if (hPlane.Raycast(ray, out distance))
+            { // get the hit point:
+                botOfCone = ray.GetPoint(distance);
+            }
+            // Basically this just gets the new position of the camera
+            Vector3 centerOfBase = new Vector3(botOfCone.x, transform.position.y, botOfCone.z);
+            float radius = Vector3.Distance(transform.position, centerOfBase);
+            float angle = diffInX / radius - Mathf.PI/2 - origFacingDir.y/180 * Mathf.PI; // arclength-radius angle (in radians)
+            transform.position = new Vector3(radius * Mathf.Cos(angle) + centerOfBase.x, transform.position.y, radius * Mathf.Sin(angle) + centerOfBase.z);
+
+            // this rotates the camera with respect to the new position, such that it is still facing the middle.
+            transform.eulerAngles = new Vector3(origFacingDir.x, origFacingDir.y - diffInX / radius * 180 / Mathf.PI  ,origFacingDir.z);
         }
+        yield return null;
     }
     
     // Scroll wheel with zoom of y=2 to y=10
-    void Zoom ()
+    IEnumerator Zoom ()
     {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         if (transform.position.y > 2 && scroll > 0) transform.position += transform.forward;
         if (transform.position.y < 10 && scroll < 0) transform.position -= transform.forward;
+        yield return null;
     }
 }

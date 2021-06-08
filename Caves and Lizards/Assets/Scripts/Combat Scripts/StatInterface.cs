@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using StatsNS;
 
 public interface StatInterface
 {   
-    float getInitiative();
     bool hasEndedTurn();
     void startTurn();
     void endTurn();
-    bool isAlive();
+    Stats getStats();
 }

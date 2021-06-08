@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Combat : MonoBehaviour
+public class SceneManagerFile : MonoBehaviour
 {
-    List<GameObject> inCombat;
-    List<GameObject> nextTurn;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,5 +15,9 @@ public class Combat : MonoBehaviour
     void Update()
     {
         
+    }
+    public void loadGame() 
+    {
+        SceneManager.LoadScene("MainScene");
     }
 }

@@ -43,16 +43,16 @@ public class CombatTime : MonoBehaviour
             currTurnUnit = combatUnitsList[currUnitIndex];
             currTurnUnit.GetComponent<StatInterface>().startTurn();
             Debug.Log("Its " + currTurnUnit + "'s Turn!");
-            // Debug.Log("Currently unable to go to next turn");
         }
-        if (isCombatTime && !enemy1Stat.isAlive())
-        {
-            Debug.Log("Combat ended!");
+        if (isCombatTime && !enemy1Stat.getStats().isAlive())
+        {   
+            enemy1Stat.endTurn();
+            Debug.Log("CombatTime.cs: Combat ended!");
             isCombatTime = false;
         }
-        if (!isCombatTime && distance < 4 && enemy1.GetComponent<StatInterface>().isAlive())
+        if (!isCombatTime && distance < 4 && enemy1Stat.getStats().isAlive())
         {   
-            Debug.Log("Combat started!");
+            Debug.Log("CombatTime.cs: Combat started!");
             isCombatTime = true;
         }
     }
@@ -68,9 +68,9 @@ public class CombatTime : MonoBehaviour
 
         // Insert player unit to the list.
         playerStat = player.GetComponent<StatInterface>();
-        float playerInitiative = playerStat.getInitiative();
+        float playerInitiative = playerStat.getStats().getInitiative();
         int startIndex = 0;
-        while(combatUnitsList[startIndex].GetComponent<StatInterface>().getInitiative() > playerInitiative) {
+        while(combatUnitsList[startIndex].GetComponent<StatInterface>().getStats().getInitiative() > playerInitiative) {
             startIndex++;
         }
         combatUnitsList.Insert(startIndex, player);
